@@ -16,10 +16,6 @@ public class MainPresenter {
         this.userDAO = new UserDAO();
     }
 
-    public IMainView getMainView() {return mainView;}
-
-    public void setMainView(IMainView mainView) {this.mainView = mainView;}
-
     public void setFrameGuestMode(){
         mainView.changeFrameToGuest();
     }

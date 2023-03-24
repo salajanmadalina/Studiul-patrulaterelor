@@ -100,7 +100,6 @@ public class MainView extends JFrame implements IMainView {
         MainView.frame = frame;
     }
 
-
     @Override
     public String getUsername() {
         return userName.getText();

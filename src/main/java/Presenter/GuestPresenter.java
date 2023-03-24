@@ -11,14 +11,6 @@ public class GuestPresenter {
         this.iGuest = guest;
     }
 
-    public IGuest getGuest() {
-        return iGuest;
-    }
-
-    public void setGuest(IGuest guest) {
-        this.iGuest = guest;
-    }
-
     public void setFrameRegister(){
         iGuest.changeFrameToRegister();
     }

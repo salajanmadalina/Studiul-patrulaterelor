@@ -36,18 +36,6 @@ public class Punct extends ElementGeometric {
                 (this.y - punct.getY()) * (this.y - punct.getY()));
     }
 
-    public boolean distincte(Punct punct){
-        if(this.x != punct.getX() || this.y != punct.getY())
-            return false;
-        return true;
-    }
-
-    public boolean coliniare(Punct punct1, Punct punct2){
-        float panta1 = (float) (punct1.getY() - this.y) / (punct1.getX() - this.x);
-        float panta2 = (float) (punct2.getY() - punct1.getY()) / (punct2.getX() - punct1.getX());
-        return panta1 == panta2;
-    }
-
     @Override
     public void desenare() {
 

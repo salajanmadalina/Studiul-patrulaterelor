@@ -27,7 +27,6 @@ public class ConnectionFactory {
 
     private Connection createConnection() {
         Connection connection = null;
-       // DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
         try {
             connection = DriverManager.getConnection(DBURL, USER, PASS);
         } catch (SQLException e) {

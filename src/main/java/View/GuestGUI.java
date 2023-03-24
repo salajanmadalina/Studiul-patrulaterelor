@@ -10,13 +10,10 @@ import java.util.ArrayList;
 
 public class GuestGUI extends JFrame implements IGuest {
     private GuestPresenter presenter;
-    int x, y;
-    Color roz = new Color(204, 153, 153);
-    Color albastru = new Color(63, 127, 190);
-    Color verde = new Color(52, 136, 56);
+    private Color roz = new Color(204, 153, 153);
+    private Color albastru = new Color(63, 127, 190);
+    private Color verde = new Color(52, 136, 56);
     private static JFrame frame;
-    ArrayList<Integer> alX = new ArrayList<>();
-    ArrayList<Integer> alY = new ArrayList<>();
     private JTextArea textArea;
     private JButton btnSolicitareCont;
     private JButton btnAfisareDate;
@@ -24,6 +21,9 @@ public class GuestGUI extends JFrame implements IGuest {
     private JPanel panel;
     private JButton btnBack;
     private JComboBox comboBox;
+    ArrayList<Integer> alX = new ArrayList<>();
+    ArrayList<Integer> alY = new ArrayList<>();
+    int x, y;
 
     public GuestGUI(){
         presenter = new GuestPresenter(this);
@@ -175,6 +175,8 @@ public class GuestGUI extends JFrame implements IGuest {
         frame.setVisible(true);
 
     }
+
+
 
     @Override
     public void changeFrameToRegister() {

@@ -25,38 +25,6 @@ public class Patrulater extends FiguraGeometrica{
         this.p4 = new Punct(coords.get(6), coords.get(7));
     }
 
-    public Punct getP1() {
-        return p1;
-    }
-
-    public void setP1(Punct p1) {
-        this.p1 = p1;
-    }
-
-    public Punct getP2() {
-        return p2;
-    }
-
-    public void setP2(Punct p2) {
-        this.p2 = p2;
-    }
-
-    public Punct getP3() {
-        return p3;
-    }
-
-    public void setP3(Punct p3) {
-        this.p3 = p3;
-    }
-
-    public Punct getP4() {
-        return p4;
-    }
-
-    public void setP4(Punct p4) {
-        this.p4 = p4;
-    }
-
     public ArrayList<Float> lungimiLaturi(){
         ArrayList<Float> lungimi = new ArrayList<Float>();
         lungimi.add(p1.distanta(p2));

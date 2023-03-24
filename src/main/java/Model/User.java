@@ -1,7 +1,5 @@
 package Model;
 
-import java.util.Arrays;
-
 public class User{
     private String nume;
     private int id;

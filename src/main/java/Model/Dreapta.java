@@ -12,22 +12,6 @@ public class Dreapta extends ElementGeometric{
         this.punct2 = punct2;
     }
 
-    public Punct getPunct1() {
-        return punct1;
-    }
-
-    public void setPunct1(Punct punct1) {
-        this.punct1 = punct1;
-    }
-
-    public Punct getPunct2() {
-        return punct2;
-    }
-
-    public void setPunct2(Punct punct2) {
-        this.punct2 = punct2;
-    }
-
     public float panta(){
         return (float) (punct2.getY() - punct1.getY()) / (punct2.getX() - punct1.getX());
     }

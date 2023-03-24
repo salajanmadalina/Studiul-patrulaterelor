@@ -16,8 +16,8 @@ public class UserPresenter {
     private IntrebareDAO intrebareDAO;
     private TestDAO testDAO;
     private String raspunsuri;
-    private int nr;
     private String intrebariRezerva;
+    private int nr;
 
     public UserPresenter(IUser iUser) {
         this.iUser = iUser;

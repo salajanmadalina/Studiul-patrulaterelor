@@ -20,22 +20,6 @@ public class Cerc extends FiguraGeometrica{
 
     }
 
-    public Punct getCentru() {
-        return centru;
-    }
-
-    public void setCentru(Punct centru) {
-        this.centru = centru;
-    }
-
-    public float getRaza() {
-        return raza;
-    }
-
-    public void setRaza(float raza) {
-        this.raza = raza;
-    }
-
     @Override
     public void desenare() {
         
