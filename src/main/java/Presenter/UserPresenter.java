@@ -56,10 +56,16 @@ public class UserPresenter {
     public void addTest(){
         ArrayList<Integer> intrebari = new ArrayList<Integer>();
         Random rand = new Random();
+        int num;
 
         for (int i = 0; i < 10; i++) {
-            int num = rand.nextInt((10 - 1) + 1) + 1;
-            intrebari.add(num);
+            while(true){
+                num = rand.nextInt((10 - 1) + 1) + 1;
+                if(!intrebari.contains(num)){
+                    intrebari.add(num);
+                    break;
+                }
+            }
         }
 
         this.intrebariRezerva = intrebari.stream().map(Object::toString).collect(Collectors.joining(", "));

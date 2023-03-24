@@ -191,7 +191,7 @@ public class GuestGUI extends JFrame implements IGuest {
         Graphics g = panelCircle.getGraphics();
         super.paint(g);
         g.drawOval((coords.get(0) - coords.get(2)), (coords.get(1) - coords.get(2)), 2 * coords.get(2), 2 * coords.get(2));
-        g.drawOval((coords.get(0) - coords.get(5)), (coords.get(1) - coords.get(5)), 2 * coords.get(5), 2 * coords.get(5));
+        g.drawOval((coords.get(0) - coords.get(5)/4), (coords.get(1) - coords.get(5)/4), coords.get(5)/2, coords.get(5)/2);
     }
 
     @Override
