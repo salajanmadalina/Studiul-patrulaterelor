@@ -68,7 +68,7 @@ public class UserGUI extends JFrame implements IUser{
         btnGenereazaPunctaj.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         btnGenereazaPunctaj.setBounds(236, 441, 217, 46);
         btnGenereazaPunctaj.addActionListener(action -> {
-            presenter.getPunctajTest(textRaspunsuri.getText(), textArea.getText());
+            presenter.getPunctajTest();
         });
         frame.getContentPane().add(btnGenereazaPunctaj);
 
@@ -98,5 +98,15 @@ public class UserGUI extends JFrame implements IUser{
     public void changeFrameToMain() {
         frame.dispose();
         new MainView();
+    }
+
+    @Override
+    public String getRaspunsuri() {
+        return textRaspunsuri.getText();
+    }
+
+    @Override
+    public String getIntrebari() {
+        return textArea.getText();
     }
 }

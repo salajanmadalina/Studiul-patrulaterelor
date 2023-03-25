@@ -82,7 +82,9 @@ public class UserPresenter {
         iUser.addTest(text);
     }
 
-    public void getPunctajTest(String raspunsuri, String intrebari){
+    public void getPunctajTest(){
+        String raspunsuri = iUser.getRaspunsuri();
+        String intrebari = iUser.getIntrebari();
         String[] strValues = raspunsuri.split("\n");
         String[] raspunsuriCorecte = this.raspunsuri.split("\n");
 

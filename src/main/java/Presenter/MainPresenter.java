@@ -16,10 +16,6 @@ public class MainPresenter {
         this.userDAO = new UserDAO();
     }
 
-    public void setFrameGuestMode(){
-        mainView.changeFrameToGuest();
-    }
-
     public User findById(int id) {
         User st = userDAO.findById(id);
         if (st == null) {
@@ -35,6 +31,24 @@ public class MainPresenter {
         return list;
     }
 
+    public User insertUser(User user) {
+        return userDAO.insert(user);
+    }
+
+    public void setFrameGuestMode(){
+        mainView.changeFrameToGuest();
+    }
+
+    public void insereazaUser(){
+        String nume = mainView.getUsername();
+        String parola = mainView.getPassword();
+        if(!nume.isEmpty() && !parola.isEmpty()){
+            int id = findAll().size() + 2;
+            insertUser(new User(nume, parola, "ELEV", id));
+
+        }
+    }
+
     public void setFrameUserOrAdmin(){
         ArrayList<User> users = findAll();
 
@@ -47,18 +61,6 @@ public class MainPresenter {
                     mainView.changeFrameToUser();
                 }
             }
-        }
-    }
-
-    public User insertUser(User user) {
-        return userDAO.insert(user);
-    }
-
-    public void insereazaUser(String nume, String parola, String rol){
-        if(!nume.isEmpty() && !parola.isEmpty() && !rol.isEmpty()){
-            int id = findAll().size() + 1;
-            insertUser(new User(nume, parola, rol, id));
-
         }
     }
 

@@ -49,20 +49,28 @@ public class AdminPresenter {
         iAdmin.listaUtilizatori(info);
     }
 
-    public void stergeUser(String id){
+    public void stergeUser(){
+        String id = iAdmin.getId();
         deleteUser(Integer.parseInt(id));
     }
 
-    public void modificaUser(String id, String nume, String parola){
+    public void modificaUser(){
+        String id = iAdmin.getId();
+        String nume = iAdmin.getNume();
+        String parola = iAdmin.getParola();
         if(!nume.isEmpty())
             updateUser("nume", nume, Integer.parseInt(id));
         if(!parola.isEmpty())
             updateUser("parola", parola, Integer.parseInt(id));
     }
 
-    public void insereazaUser(String nume, String parola, String rol){
+    public void insereazaUser(){
+        String id = iAdmin.getId();
+        String nume = iAdmin.getNume();
+        String parola = iAdmin.getParola();
+        String rol = iAdmin.getRol();
         if(!nume.isEmpty() && !parola.isEmpty() && !rol.isEmpty())
-            insertUser(new User(nume, parola, rol, 2));
+            insertUser(new User(nume, parola, rol, Integer.parseInt(id)));
     }
 
     public void setFrameToMain(){

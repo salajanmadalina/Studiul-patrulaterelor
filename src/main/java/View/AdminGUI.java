@@ -78,7 +78,7 @@ public class AdminGUI extends JFrame implements IAdmin{
         btnDelete.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         btnDelete.setBounds(823, 245, 149, 46);
         btnDelete.addActionListener(action -> {
-            presenter.stergeUser(idField.getText());
+            presenter.stergeUser();
         });
         frame.getContentPane().add(btnDelete);
 
@@ -96,7 +96,7 @@ public class AdminGUI extends JFrame implements IAdmin{
         btnUpdate.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         btnUpdate.setBounds(823, 310, 149, 46);
         btnUpdate.addActionListener(action -> {
-            presenter.modificaUser(nameField.getText(), passwordField.getText(), idField.getText());
+            presenter.modificaUser();
         });
         frame.getContentPane().add(btnUpdate);
 
@@ -104,7 +104,7 @@ public class AdminGUI extends JFrame implements IAdmin{
         btnCreeaza.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         btnCreeaza.setBounds(823, 378, 149, 46);
         btnCreeaza.addActionListener(action -> {
-            presenter.insereazaUser(nameField.getText(), String.valueOf(passwordField.getPassword()), rolField.getText());
+            presenter.insereazaUser();
         });
         frame.getContentPane().add(btnCreeaza);
 
@@ -130,5 +130,25 @@ public class AdminGUI extends JFrame implements IAdmin{
     public void changeFrameToMain() {
         frame.dispose();
         new MainView();
+    }
+
+    @Override
+    public String getId() {
+        return idField.getText();
+    }
+
+    @Override
+    public String getNume() {
+        return nameField.getText();
+    }
+
+    @Override
+    public String getParola() {
+        return String.valueOf(passwordField.getPassword());
+    }
+
+    @Override
+    public String getRol() {
+        return rolField.getText();
     }
 }

@@ -70,22 +70,11 @@ public class MainView extends JFrame implements IMainView {
         lblStudiulPatrulaterelor.setBounds(281, 31, 396, 80);
         frame.getContentPane().add(lblStudiulPatrulaterelor);
 
-        rolField = new JTextField();
-        rolField.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-        rolField.setColumns(10);
-        rolField.setBounds(518, 307, 164, 50);
-        frame.getContentPane().add(rolField);
-
-        JLabel lblRol = new JLabel("Rol:");
-        lblRol.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        lblRol.setBounds(414, 307, 94, 50);
-        frame.getContentPane().add(lblRol);
-
         btnRegister = new JButton("Inregistreaza-te");
         btnRegister.setFont(new Font("Times New Roman", Font.BOLD, 20));
         btnRegister.setBounds(628, 386, 171, 50);
         btnRegister.addActionListener(action -> {
-            presenter.insereazaUser(userName.getText(), String.valueOf(passwordField.getPassword()), rolField.getText());
+            presenter.insereazaUser();
         });
         frame.getContentPane().add(btnRegister);
 
@@ -108,11 +97,6 @@ public class MainView extends JFrame implements IMainView {
     @Override
     public String getPassword() {
         return String.valueOf(passwordField.getPassword());
-    }
-
-    @Override
-    public String getRole() {
-        return userName.toString();
     }
 
     @Override
