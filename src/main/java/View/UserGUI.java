@@ -15,7 +15,6 @@ public class UserGUI extends JFrame implements IUser{
     private JTextArea textPunctaj;
     private JButton btnBack;
     private JScrollPane scrollBar;
-irina
 
     public UserGUI() {
         presenter = new UserPresenter(this);
