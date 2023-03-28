@@ -14,6 +14,8 @@ public class UserGUI extends JFrame implements IUser{
     private JTextArea textRaspunsuri;
     private JTextArea textPunctaj;
     private JButton btnBack;
+    private JScrollPane scrollBar;
+irina
 
     public UserGUI() {
         presenter = new UserPresenter(this);
@@ -27,8 +29,14 @@ public class UserGUI extends JFrame implements IUser{
 
         textArea = new JTextArea();
         textArea.setBounds(39, 65, 479, 345);
+        textArea.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         textArea.setEditable(false);
         frame.getContentPane().add(textArea);
+
+        scrollBar = new JScrollPane(textArea);
+        scrollBar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollBar.setBounds(39, 75, 479, 345);
+        frame.getContentPane().add(scrollBar);
 
         JLabel lblNewLabel_1 = new JLabel("Intrebari test");
         lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 25));
@@ -46,6 +54,7 @@ public class UserGUI extends JFrame implements IUser{
         textRaspunsuri = new JTextArea();
         textRaspunsuri.setEditable(true);
         textRaspunsuri.setBounds(600, 65, 479, 345);
+        textRaspunsuri.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         frame.getContentPane().add(textRaspunsuri);
 
         JLabel lblNewLabel_1_1 = new JLabel("Raspunsurile tale");

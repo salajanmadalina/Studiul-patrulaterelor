@@ -21,6 +21,7 @@ public class GuestGUI extends JFrame implements IGuest {
     private JPanel panel;
     private JButton btnBack;
     private JComboBox comboBox;
+    private JScrollPane scrollBar;
     ArrayList<Integer> alX = new ArrayList<>();
     ArrayList<Integer> alY = new ArrayList<>();
     int x, y;
@@ -46,8 +47,14 @@ public class GuestGUI extends JFrame implements IGuest {
 
         textArea = new JTextArea();
         textArea.setBounds(39, 65, 479, 345);
+        textArea.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         textArea.setEditable(false);
         frame.getContentPane().add(textArea);
+
+        scrollBar = new JScrollPane(textArea);
+        scrollBar.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollBar.setBounds(39, 75, 479, 345);
+        frame.getContentPane().add(scrollBar);
 
         JLabel lblNewLabel_1 = new JLabel("Caracteristici patrulater");
         lblNewLabel_1.setFont(new Font("Times New Roman", Font.PLAIN, 25));
@@ -175,8 +182,6 @@ public class GuestGUI extends JFrame implements IGuest {
         frame.setVisible(true);
 
     }
-
-
 
     @Override
     public void changeFrameToRegister() {
