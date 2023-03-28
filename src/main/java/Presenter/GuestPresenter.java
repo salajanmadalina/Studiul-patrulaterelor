@@ -17,6 +17,7 @@ public class GuestPresenter {
 
     public void giveInfoToView(){
         ArrayList<Integer> info = iGuest.getInfoFromView();
+
         Patrulater patrulater= new Patrulater(info);
         ArrayList<Integer> coords = patrulater.cercuri();
 

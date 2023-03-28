@@ -60,54 +60,44 @@ public class Patrulater extends FiguraGeometrica{
     }
 
     public float razaCerculuiCircumscris(){
+        //verificam daca patrulaterul este convex
+        if(convexSauConcav().equals("Concav"))
+            return 0.0f;
+
         ArrayList<Float> laturi = lungimiLaturi();
-        float arie = aria();
 
+        //verificam daca patrulaterul este circumscriptibil
+        if(Math.round(laturi.get(0)) + Math.round(laturi.get(2)) != Math.round(laturi.get(1)) + Math.round(laturi.get(3))) {
+            Dreapta ab = new Dreapta(p1, p2);
+            Dreapta bc = new Dreapta(p2, p3);
+            Dreapta cd = new Dreapta(p3, p4);
+            Dreapta da = new Dreapta(p4, p1);
+            Punct e = ab.punctIntersectie(cd);
+            Punct f = bc.punctIntersectie(da);
+
+            if(Math.round(p2.distanta(e)) + Math.round(p2.distanta(f)) != Math.round(p4.distanta(e)) + Math.round(p4.distanta(f))){
+                return 0.0f;
+            }
+        }
         // calculam raza cercului circumscris cu formula lui Euler
-        float razaCircumscris = (laturi.get(0) * laturi.get(1) * laturi.get(2) * laturi.get(3)) / (4 * arie);
-
-        return razaCircumscris;
+        return  (laturi.get(0) * laturi.get(1) * laturi.get(2) * laturi.get(3)) / (4 * aria());
     }
 
     public float razaCerculuiInscris(){
-        float arie = aria();
-
+        //verificam daca patrulaterul este convex
+        if(convexSauConcav().equals("Concav"))
+            return 0.0f;
         // calculam raza cercului inscris cu formula lui Brahmagupta
-        float razaInscris = (2 * arie) / (perimetru());
-
-        return razaInscris;
+        return  (2 * aria()) / (perimetru());
     }
 
     public Cerc cercCircumscris(){
         float raza = razaCerculuiCircumscris();
-        Punct centru = new Punct();
+        Dreapta d1 = new Dreapta(p1, p3);
+        Dreapta d2 = new Dreapta(p2, p4);
+        Punct centre = d1.punctIntersectie(d2);
 
-        float x1 = p1.getX();
-        float y1 = p1.getY();
-        float x2 = p2.getX();
-        float y2 = p2.getY();
-        float x3 = p3.getX();
-        float y3 = p3.getY();
-        float x4 = p4.getX();
-        float y4 = p4.getY();
-
-        float a = (float) Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-        float b = (float) Math.sqrt(Math.pow(x3 - x2, 2) + Math.pow(y3 - y2, 2));
-        float c = (float) Math.sqrt(Math.pow(x4 - x3, 2) + Math.pow(y4 - y3, 2));
-        float d = (float) Math.sqrt(Math.pow(x1 - x4, 2) + Math.pow(y1 - y4, 2));
-
-        float A = (float) Math.acos((Math.pow(a, 2) + Math.pow(d, 2) - Math.pow(b, 2) - Math.pow(c, 2)) / (2 * a * d));
-        float B = (float) Math.acos((Math.pow(b, 2) + Math.pow(a, 2) - Math.pow(c, 2) - Math.pow(d, 2)) / (2 * b * a));
-        float C = (float) Math.acos((Math.pow(c, 2) + Math.pow(b, 2) - Math.pow(d, 2) - Math.pow(a, 2)) / (2 * c * b));
-        float D = (float) Math.acos((Math.pow(d, 2) + Math.pow(c, 2) - Math.pow(a, 2) - Math.pow(b, 2)) / (2 * d * c));
-
-        float centerX = (float) ((a * Math.sin(D) + b * Math.sin(C) + c * Math.sin(B) + d * Math.sin(A)) / (Math.sin(A) + Math.sin(B) + Math.sin(C) + Math.sin(D)));
-        float centerY = (float) ((a * Math.cos(D) + b * Math.cos(C) + c * Math.cos(B) + d * Math.cos(A)) / (Math.sin(A) + Math.sin(B) + Math.sin(C) + Math.sin(D)));
-
-        centru.setX(Math.round(centerX));
-        centru.setY(Math.round(centerY));
-
-        return new Cerc(centru, raza);
+        return new Cerc(centre, raza);
     }
 
     public Cerc cercInscris(){
@@ -120,8 +110,8 @@ public class Patrulater extends FiguraGeometrica{
 
     public String convexSauConcav(){
         for(int i = 0; i < 4; i ++){
-            if(masuriUnghiuri().get(i) > 180.0f)
-                return "Concav;";
+            if(masuriUnghiuri().get(i) > 180.0f || masuriUnghiuri().get(i).isNaN())
+                return "Concav";
         }
         return "Convex";
     }
@@ -171,7 +161,7 @@ public class Patrulater extends FiguraGeometrica{
         information += "Perimetrul este " + perimetru() + ";\n";
         information += "Aria este " + aria() + ";\n";
         information += "Raza cercului circumscris este " + razaCerculuiCircumscris() + ";\n";
-        information += "Raza cerculuin inscris este " + razaCerculuiInscris() + ";\n";
+        information += "Raza cercului inscris este " + razaCerculuiInscris() + ";\n";
 
         return information;
     }
